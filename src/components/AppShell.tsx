@@ -2,7 +2,7 @@
 
 import { useApp } from "./store";
 import { C } from "./tokens";
-import { StatusBarGlyphs, ChevronLeft, NavHome, NavBookings, NavInbox, NavMore, ChevronDown } from "./icons";
+import { ChevronLeft, NavHome, NavBookings, NavInbox, NavMore, ChevronDown } from "./icons";
 import HomeScreen from "./screens/Home";
 import BookingsScreen from "./screens/Bookings";
 import InboxScreen from "./screens/Inbox";
@@ -52,28 +52,23 @@ export default function AppShell() {
   const hasUnread = data.threads.some((t) => t.unread);
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+    <div style={{ minHeight: "100dvh", display: "flex", justifyContent: "center" }}>
+      {/* Responsive app column — full-bleed on phones, a centered mobile-width
+          column on larger screens. No device chrome. */}
       <div
         style={{
           position: "relative",
           width: "100%",
-          maxWidth: 404,
-          height: "min(872px, calc(100vh - 40px))",
+          maxWidth: 480,
+          height: "100dvh",
           background: C.screen,
-          borderRadius: 44,
-          border: "1px solid #4a4640",
-          boxShadow: "0 30px 70px rgba(60,60,80,.22), inset 0 0 0 6px #0f0d0b",
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
+          paddingTop: "env(safe-area-inset-top)",
+          boxShadow: "0 0 40px rgba(60,60,80,.10)",
         }}
       >
-        {/* status bar */}
-        <div style={{ height: 44, flex: "0 0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 26px 0 30px", color: C.ink, fontSize: 14, fontWeight: 600, letterSpacing: ".02em" }}>
-          <span>9:41</span>
-          <StatusBarGlyphs />
-        </div>
-
         {/* app bar */}
         <div style={{ flex: "0 0 auto", minHeight: 56, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 16px", borderBottom: `1px solid ${C.hair}` }}>
           {showBack ? (
@@ -124,7 +119,7 @@ export default function AppShell() {
 
         {/* bottom nav */}
         {showNav && (
-          <div style={{ flex: "0 0 auto", display: "flex", justifyContent: "space-around", alignItems: "center", padding: "8px 6px 20px", borderTop: `1px solid ${C.hair2}`, background: "rgba(255,255,255,.75)" }}>
+          <div style={{ flex: "0 0 auto", display: "flex", justifyContent: "space-around", alignItems: "center", padding: "8px 6px calc(14px + env(safe-area-inset-bottom))", borderTop: `1px solid ${C.hair2}`, background: "rgba(255,255,255,.75)" }}>
             <NavButton label="Home" color={navColor("home")} onClick={() => set({ tab: "home", moreView: null, openThreadId: null, selBookingId: null, selListing: null })}>
               <NavHome color={navColor("home")} />
             </NavButton>
