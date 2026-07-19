@@ -45,8 +45,23 @@ OWNERREZ_PROPERTY_ID_WHOLE=123458   # the whole-house property id
 # USE_SEED_DATA=true                 # force sample data even with creds (demos)
 ```
 
-Restart `npm run dev`. On the **More → Integrations** screen the OwnerRez card
-shows "synced" (green) instead of "showing demo data" when live data loads.
+Verify the connection and auto-discover your ids with the built-in checker:
+
+```bash
+npm run ownerrez:check
+```
+
+It prints your properties, a suggested `OWNERREZ_PROPERTY_ID_*` mapping to paste,
+and a season booking count. (It uses `curl`, so it works through the proxy inside
+a Claude Code web environment; it never prints your token.)
+
+Then restart `npm run dev`. On the **More → Integrations** screen the OwnerRez
+card shows "synced" (green) instead of "showing demo data" when live data loads.
+
+> **Running inside a Claude Code web session?** Outbound traffic is proxied and
+> `api.ownerrez.com` must be allowed by the session's network policy. The app's
+> server-side fetch honors the `HTTPS_PROXY` automatically (via undici); on
+> Vercel there's no proxy and it's a no-op.
 
 > If the property_id vars are left blank, the mapper falls back to matching by
 > property **name** (looks for "tides"/"dunes"/"whole"), so it can work before

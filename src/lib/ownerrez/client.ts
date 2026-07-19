@@ -37,8 +37,28 @@ function authHeader({ email, token }: OwnerRezConfig): string {
   return "Basic " + Buffer.from(`${email}:${token}`).toString("base64");
 }
 
+/**
+ * Honor an ambient HTTPS proxy if one is configured (e.g. inside a Claude Code
+ * web environment, where outbound traffic is proxied). Node's built-in fetch
+ * ignores HTTPS_PROXY, so we hand it an undici ProxyAgent. On Vercel and other
+ * hosts no proxy env is set, so this is a no-op and plain fetch is used.
+ */
+let dispatcherResolved = false;
+let proxyDispatcher: unknown;
+async function getDispatcher(): Promise<unknown> {
+  if (dispatcherResolved) return proxyDispatcher;
+  dispatcherResolved = true;
+  const proxy = process.env.HTTPS_PROXY || process.env.https_proxy;
+  if (proxy) {
+    const { ProxyAgent } = await import("undici");
+    proxyDispatcher = new ProxyAgent(proxy);
+  }
+  return proxyDispatcher;
+}
+
 async function get<T>(config: OwnerRezConfig, path: string): Promise<T> {
   const url = path.startsWith("http") ? path : `${BASE_URL}${path}`;
+  const dispatcher = await getDispatcher();
   const res = await fetch(url, {
     headers: {
       Authorization: authHeader(config),
@@ -48,6 +68,8 @@ async function get<T>(config: OwnerRezConfig, path: string): Promise<T> {
     },
     // Bookings change often; don't let Next cache stale data at the fetch layer.
     cache: "no-store",
+    // `dispatcher` is an undici-specific fetch option (not in the DOM types).
+    ...(dispatcher ? ({ dispatcher } as Record<string, unknown>) : {}),
   });
   if (!res.ok) {
     const body = await res.text().catch(() => "");

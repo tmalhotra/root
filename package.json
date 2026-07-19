@@ -9,12 +9,14 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "ownerrez:check": "node scripts/ownerrez-check.mjs"
   },
   "dependencies": {
     "next": "^15.5.20",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "undici": "^6.27.0"
   },
   "devDependencies": {
     "@types/node": "22.10.7",
