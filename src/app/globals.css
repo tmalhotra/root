@@ -1,0 +1,95 @@
+/* Design tokens + global resets for Dunes + Tides.
+   Palette and type scale are lifted from the design handoff (README → Design
+   Tokens). Screen titles / big numbers use the display face; everything else
+   uses Poppins. */
+
+:root {
+  /* surfaces */
+  --dt-canvas-from: #eef1f4;
+  --dt-canvas-to: #e2e6ea;
+  --dt-screen: #f4f2ed;
+  --dt-card: #ffffff;
+
+  /* text */
+  --dt-ink: #1d1d1b;
+  --dt-body: #2b2823;
+  --dt-muted: #6f6a62;
+  --dt-faint: #8f8a82;
+
+  /* accents */
+  --dt-accent: #20b7e6; /* ocean blue — Tides, CTAs, links */
+  --dt-accent-deep: #0e7fa6;
+  --dt-dunes: #ff9f45; /* amber — Dunes, departing */
+  --dt-whole: #ff6f61; /* coral — whole house */
+  --dt-airbnb: #ff5a5f;
+  --dt-vrbli: #245abc;
+  --dt-danger: #e5484d;
+
+  /* hairlines */
+  --dt-hair: rgba(0, 0, 0, 0.07);
+
+  /* type */
+  --dt-font-ui: "Poppins", system-ui, -apple-system, sans-serif;
+  --dt-font-display: "Unbounded", "Poppins", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--dt-font-ui);
+  color: var(--dt-ink);
+  background: radial-gradient(130% 90% at 50% 0%, var(--dt-canvas-from) 0%, var(--dt-canvas-to) 72%);
+  min-height: 100vh;
+}
+
+/* Hidden scrollbars for the app's scroll regions */
+.dt-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.dt-hscroll::-webkit-scrollbar {
+  height: 0;
+}
+.dt-scroll,
+.dt-hscroll {
+  scrollbar-width: none;
+}
+
+/* Screen + sheet transitions */
+@keyframes dtFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes dtSheet {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+.dt-screen {
+  animation: dtFade 0.28s ease-out;
+}
+.dt-sheet {
+  animation: dtSheet 0.26s ease-out;
+}
+
+button {
+  font-family: inherit;
+}
