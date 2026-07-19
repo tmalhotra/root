@@ -1,0 +1,30 @@
+{
+  "name": "dunes-tides",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dunes + Tides — mobile-first short-term rental property manager, backed by OwnerRez.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "ownerrez:check": "node scripts/ownerrez-check.mjs"
+  },
+  "dependencies": {
+    "next": "^15.5.20",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "undici": "^6.27.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.7",
+    "@types/react": "19.0.7",
+    "@types/react-dom": "19.0.3",
+    "eslint": "9.18.0",
+    "eslint-config-next": "^15.5.20",
+    "typescript": "5.7.3",
+    "vitest": "^3.2.7"
+  }
+}
