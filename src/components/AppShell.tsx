@@ -83,7 +83,7 @@ export default function AppShell() {
             </div>
           ) : null}
           {showSwitcher && (
-            <div style={{ fontFamily: "'Unbounded','Poppins',sans-serif", fontStyle: "italic", fontSize: 20, letterSpacing: ".01em", color: C.ink, textTransform: "uppercase", paddingLeft: 4 }}>
+            <div style={{ fontFamily: "'Poppins',sans-serif", fontStyle: "italic", fontSize: 20, letterSpacing: ".01em", color: C.ink, textTransform: "uppercase", paddingLeft: 4 }}>
               Dunes <span style={{ color: C.accent }}>+</span> Tides
             </div>
           )}
