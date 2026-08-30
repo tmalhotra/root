@@ -30,7 +30,7 @@
 
   /* type */
   --dt-font-ui: "Poppins", system-ui, -apple-system, sans-serif;
-  --dt-font-display: "Unbounded", "Poppins", system-ui, sans-serif;
+  --dt-font-display: "Poppins", system-ui, sans-serif;
 }
 
 * {

@@ -16,7 +16,7 @@ export default function AnalyticsScreen() {
         {stats.map((k) => (
           <div key={k.label} style={{ background: C.card, border: `1px solid ${C.hair}`, borderRadius: 16, padding: 14 }}>
             <div style={{ color: C.muted, fontSize: 11, letterSpacing: ".08em" }}>{k.label}</div>
-            <div style={{ fontFamily: "'Unbounded','Poppins',sans-serif", fontStyle: "italic", color: C.ink, fontSize: 26, marginTop: 5 }}>{k.value}</div>
+            <div style={{ fontFamily: "'Poppins',sans-serif", fontStyle: "italic", color: C.ink, fontSize: 26, marginTop: 5 }}>{k.value}</div>
           </div>
         ))}
       </div>

@@ -18,7 +18,11 @@ export const C = {
   hair2: "rgba(0,0,0,.08)",
 } as const;
 
-export const FONT_DISPLAY = "'Unbounded','Poppins',sans-serif";
+// Display face. The design specifies Mafinest with a Poppins fallback; since
+// Mafinest isn't freely available we render the Poppins fallback (italic) —
+// exactly what the design mockups fall back to. Do NOT prepend another display
+// font here; it shifts the weights/letterforms off the design.
+export const FONT_DISPLAY = "'Poppins',system-ui,sans-serif";
 export const FONT_MONO = "ui-monospace,'SF Mono',monospace";
 
 /** Reusable inline style fragment for the italic uppercase display face. */

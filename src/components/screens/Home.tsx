@@ -52,7 +52,7 @@ export default function HomeScreen() {
               <span style={{ color: "rgba(255,255,255,.92)", fontSize: 11, fontWeight: 700, letterSpacing: ".2em" }}>{HERO_EYEBROW[scope]}</span>
             </div>
           )}
-          <div style={{ fontFamily: "'Unbounded','Poppins',sans-serif", fontStyle: "italic", fontWeight: 900, WebkitTextStroke: "1.6px #FFFFFF", textTransform: "uppercase", color: "#FFFFFF", fontSize: 32, lineHeight: 0.98, marginTop: 9, textShadow: "0 2px 24px rgba(0,0,0,.4)" }}>
+          <div style={{ fontFamily: "'Poppins',sans-serif", fontStyle: "italic", fontWeight: 900, WebkitTextStroke: "1.6px #FFFFFF", textTransform: "uppercase", color: "#FFFFFF", fontSize: 32, lineHeight: 0.98, marginTop: 9, textShadow: "0 2px 24px rgba(0,0,0,.4)" }}>
             {HERO_TITLE[scope]}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 9, color: "rgba(255,255,255,.82)", fontSize: 12.5, fontWeight: 500 }}>
@@ -93,7 +93,7 @@ export default function HomeScreen() {
         {stats.map((k) => (
           <div key={k.label} style={{ background: C.card, border: `1px solid ${C.hair}`, borderRadius: 16, padding: 14 }}>
             <div style={{ color: C.muted, fontSize: 11, letterSpacing: ".1em" }}>{k.label}</div>
-            <div style={{ fontFamily: "'Unbounded','Poppins',sans-serif", fontStyle: "italic", color: C.ink, fontSize: 26, marginTop: 5 }}>{k.value}</div>
+            <div style={{ fontFamily: "'Poppins',sans-serif", fontStyle: "italic", color: C.ink, fontSize: 26, marginTop: 5 }}>{k.value}</div>
             <div style={{ color: C.accent, fontSize: 11, marginTop: 2 }}>{k.delta}</div>
           </div>
         ))}
